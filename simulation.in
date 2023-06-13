@@ -25,10 +25,10 @@ variable volum equal 790.0560*${COEF}               # The volume size (from Equi
 variable box equal (${volum}^(1.0/3.0))             # The side of the simulation box
 variable Etotal equal -5.13404                      # Total energy of system per atom
 variable dt equal 0.001                             # timestep (t*)
-variable Nf equal 25000                             # frequency of sampling
-variable nininvt equal 20000                       # initializing in NVT (2 damping rates)
-variable nsamnvt equal 100000                      # sampling energy in NVT 
-variable nrun equal 500000                         # production in NVE
+variable Nf equal 50000                             # frequency of sampling
+variable nininvt equal 20000                        # initializing in NVT (2 damping rates)
+variable nsamnvt equal 100000                       # sampling energy in NVT 
+variable nrun equal 1000000                         # production in NVE
 
 variable nb equal 10                                # Number of blocks (fix ordern)
 variable nbe equal 20                               # Number of block elements (fix ordern)
@@ -123,17 +123,17 @@ fix integrate all nve  # set to NVE
 # computing shear and bulk viscosities  using the OCTP plugin
 compute T all temp
 compute P all pressure T
-fix f1 all ordern viscosity ${Nvisc} ${Nwrit} c_P nb ${nb} nbe ${nbe} file viscosity.dat title "Testtitle viscosity"
+fix f1 all ordern viscosity ${Nvisc} ${Nwrit} c_P nb ${nb} nbe ${nbe} file viscosity.dat title "Testheader viscosity"
 
 compute KE all ke/atom
 compute PE all pe/atom
 compute ST all stress/atom NULL virial
 compute heatflux all heat/flux KE PE ST
-fix f2 all ordern thermalconductivity ${Ncond} ${Nwrit} c_heatflux nb ${nb} nbe ${nbe} file tconductivity.dat title "Testtitle thermal conductivity"
+fix f2 all ordern thermalconductivity ${Ncond} ${Nwrit} c_heatflux nb ${nb} nbe ${nbe} file tconductivity.dat title "Testheader thermal conductivity"
 
 # do compute positions for diffusion and Onsager coefficients
 compute positions all position
-fix f3 all ordern diffusivity ${Ndiff} ${Nwrit} c_positions nb ${nb} nbe ${nbe} file diffself.dat diffonsag.dat title "Testtitle diffusion and onsager coefficients"
+fix f3 all ordern diffusivity ${Ndiff} ${Nwrit} c_positions nb ${nb} nbe ${nbe} file diffself.dat diffonsag.dat title "Testheader diffusion and onsager coefficients"
 
 # and now we run it while sampling OCTP
 run ${nrun}
