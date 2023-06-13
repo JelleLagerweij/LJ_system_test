@@ -1,4 +1,4 @@
-## For testing OCTP 2.0 quickly (copied and adjusted from an SI of Sayeds paper)
+## For quicktest OCTP 2.0 (copied and adjusted from an SI of Sayeds paper)
 boundary p p p
 units lj
 atom_style molecular 
