@@ -27,7 +27,7 @@ variable Etotal equal -5.13404                      # Total energy of system per
 variable dt equal 0.001                             # timestep (t*)
 #variable Ne equal 100                               # sampling every
 #variable Nr equal 1000                              # repeating sampling
-#variable Nf equal 100000                            # frequency of sampling
+variable Nf equal 100000                            # frequency of sampling
 variable nininvt equal 500000                       # initializing in NVT (2 damping rates)
 variable nsamnvt equal 4000000                      # sampling energy in NVT 
 variable nrun equal 200000000                       # production in NVE
