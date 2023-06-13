@@ -69,7 +69,6 @@ timestep ${dt}
 reset_timestep 0
 run_style verlet
 
-dump whole_minimization all xyz 10000 minimization.xyz
 min_style cg 
 minimize 1.0e-6 1.0e-6 10000 100000
 reset_timestep 0
