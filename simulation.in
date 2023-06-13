@@ -120,18 +120,18 @@ reset_timestep 0
 #################### Here we sample the OCTP data ######################
 fix integrate all nve  # set to NVE
 
-# do compute positions for diffusion and Onsager coefficients
-compute positions all position
-fix f3 all ordern diffusivity ${Ndiff} ${Nwrit} c_positions nb ${nb} nbe ${nbe} file diffself.dat diffonsag.dat title "Testtitle diffusion and onsager coefficients"
-
 # computing shear and bulk viscosities  using the OCTP plugin
-fix f1 all ordern viscosity ${Nvisc} ${Nwrit} c_P nb ${nb} nbe ${nbe} file viscosity.dat title "Testtitle viscosity"
+#fix f1 all ordern viscosity ${Nvisc} ${Nwrit} c_P nb ${nb} nbe ${nbe} file viscosity.dat title "Testtitle viscosity"
 
-compute KE all ke/atom
-compute PE all pe/atom
-compute ST all stress/atom NULL virial
-compute heatflux all heat/flux KE PE ST
-fix f2 all ordern thermalconductivity ${Ncond} ${Nwrit} c_heatflux nb ${nb} nbe ${nbe} file tconductivity.dat title "Testtitle thermal conductivity"
+#compute KE all ke/atom
+#compute PE all pe/atom
+#compute ST all stress/atom NULL virial
+#compute heatflux all heat/flux KE PE ST
+#fix f2 all ordern thermalconductivity ${Ncond} ${Nwrit} c_heatflux nb ${nb} nbe ${nbe} file tconductivity.dat title "Testtitle thermal conductivity"
+
+# do compute positions for diffusion and Onsager coefficients
+#compute positions all position
+#fix f3 all ordern diffusivity ${Ndiff} ${Nwrit} c_positions nb ${nb} nbe ${nbe} file diffself.dat diffonsag.dat title "Testtitle diffusion and onsager coefficients"
 
 # and now we run it while sampling OCTP
 run ${nrun}
