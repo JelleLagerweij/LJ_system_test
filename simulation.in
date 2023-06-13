@@ -25,7 +25,7 @@ variable volum equal 790.0560*${COEF}               # The volume size (from Equi
 variable box equal (${volum}^(1.0/3.0))             # The side of the simulation box
 variable Etotal equal -5.13404                      # Total energy of system per atom
 variable dt equal 0.001                             # timestep (t*)
-variable Nf equal 10000                             # frequency of sampling
+variable Nf equal 25000                             # frequency of sampling
 variable nininvt equal 200000                       # initializing in NVT (2 damping rates)
 variable nsamnvt equal 1000000                      # sampling energy in NVT 
 variable nrun equal 5000000                         # production in NVE
