@@ -25,12 +25,10 @@ variable volum equal 790.0560*${COEF}               # The volume size (from Equi
 variable box equal (${volum}^(1.0/3.0))             # The side of the simulation box
 variable Etotal equal -5.13404                      # Total energy of system per atom
 variable dt equal 0.001                             # timestep (t*)
-#variable Ne equal 100                               # sampling every
-#variable Nr equal 1000                              # repeating sampling
-variable Nf equal 100000                            # frequency of sampling
-variable nininvt equal 500000                       # initializing in NVT (2 damping rates)
-variable nsamnvt equal 4000000                      # sampling energy in NVT 
-variable nrun equal 200000000                       # production in NVE
+variable Nf equal 10000                             # frequency of sampling
+variable nininvt equal 200000                       # initializing in NVT (2 damping rates)
+variable nsamnvt equal 1000000                      # sampling energy in NVT 
+variable nrun equal 5000000                         # production in NVE
 
 variable nb equal 10                                # Number of blocks (fix ordern)
 variable nbe equal 20                               # Number of block elements (fix ordern)
@@ -74,7 +72,6 @@ run_style verlet
 dump whole_minimization all xyz 10000 minimization.xyz
 min_style cg 
 minimize 1.0e-6 1.0e-6 10000 100000
-undump whole_minimization
 reset_timestep 0
 
 #################### 1) Initializing in NVT ensemble ####################
